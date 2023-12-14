@@ -5,6 +5,8 @@ services:
     build: .
     ports:
       - "5000:5000"
+    container_name: app-qr-container
+    image: app-qr:1.0.0
     depends_on:
       - db
   db:
