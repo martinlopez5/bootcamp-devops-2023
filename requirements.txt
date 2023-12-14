@@ -1,0 +1,6 @@
+Flask==2.0.1
+Werkzeug==2.0.1
+Flask-SQLAlchemy
+qrcode[pil]==7.3
+SQLAlchemy==1.4.27
+psycopg2-binary==2.9.1
