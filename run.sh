@@ -1,25 +1,43 @@
 #!/bin/bash
 
 #Run Docker Compose
-docker-compose up --build
+docker-compose up --build -d
 
-#Listar imagenes creadas
-docker images -a
+#!/bin/bash
 
-echo "Ingrese el nombre de la imagen que desea subir a DockerHub: "
-read IMAGENAME
+# Obtener la lista de imágenes de Docker
+image_list=$(docker images --format "{{.Repository}}:{{.Tag}}")
 
-#Docker login
-echo "Ahora vamos a proceder a subir nuestra imagen a Docker Hub, para ello: "
-echo "Ingrese su usuario: "
-read USER
-echo "Ingrese su contraseña: "
-read PWD
-docker login -u $USER -p $PWD docker.io
-#Tagear la imagen
-docker tag $IMAGENAME $USER/$IMAGENAME
-#Push en el registry
-docker push $USER/$IMAGENAME
+# Mostrar las imágenes disponibles al usuario
+echo "Imágenes de Docker disponibles:"
+echo "$image_list"
+
+# Solicitar al usuario que seleccione una imagen
+read -p "Seleccione la imagen que desea subir a Docker Hub: " selected_image
+
+# Verificar si la imagen seleccionada existe
+if [[ "$image_list" =~ "$selected_image" ]]; then
+    # Solicitar credenciales de Docker Hub
+    read -p "Ingrese su nombre de usuario de Docker Hub: " username
+    read -s -p "Ingrese su contraseña de Docker Hub: " password
+    echo
+
+    # Iniciar sesión en Docker Hub
+    docker login --username "$username" --password "$password"
+
+    # Etiquetar la imagen seleccionada para Docker Hub
+    docker tag "$selected_image" "$username/$selected_image"
+
+    # Subir la imagen etiquetada a Docker Hub
+    docker push "$username/$selected_image"
+
+    # Cerrar sesión en Docker Hub
+    docker logout
+
+    echo "La imagen ha sido subida exitosamente a Docker Hub."
+else
+    echo "La imagen seleccionada no existe. ¡Adiós!"
+fi
 
 
 #Borrar imagen y contendor
