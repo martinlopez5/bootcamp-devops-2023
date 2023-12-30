@@ -16,12 +16,36 @@ curl https://bootstrap.pypa.io/get-pip.py -o get-pip.py
 python3 get-pip.py
 python3 -m pip install ansible
 
-# Clonar Repo, con archivos Terraform y Ansible
-git clone https://github.com/martinlopez5/desafio-M13.git
+#Instala Docker
+curl -fsSl https://get.docker.com -o get-docker.sh
+sudo sh get-docker.sh
 
-#Copiar archivo .tfvars a carpeta Terraform
-sudo cp /vagrant/terraform.tfvars /home/vagrant/desafio-M13/Terraform
-sudo cp /vagrant/keypair-modulo13.pem /home/vagrant/desafio-M13/Terraform
+#Use docker without sudo
+sudo groupadd docker
+sudo usermod -aG docker vagrant
+newgrp docker
 
-#Moverme a directorio Terraform
-sudo chmod 777 /home/vagrant/desafio-M13/Terraform/keypair-modulo13.pem
+#Instala Jenkins
+sudo wget -O /usr/share/keyrings/jenkins-keyring.asc \
+  https://pkg.jenkins.io/debian-stable/jenkins.io-2023.key
+echo deb [signed-by=/usr/share/keyrings/jenkins-keyring.asc] \
+  https://pkg.jenkins.io/debian-stable binary/ | sudo tee \
+  /etc/apt/sources.list.d/jenkins.list > /dev/null
+sudo apt-get update
+sudo apt-get install jenkins
+
+#Jenkins use Docker
+sudo usermod -aG docker jenkins
+
+#Instala Java
+sudo apt-get install openjdk-11-jdk
+
+##Clonar Repo, con archivos Terraform y Ansible
+# git clone https://github.com/martinlopez5/desafio-M13.git
+# 
+##Copiar archivo .tfvars a carpeta Terraform
+# sudo cp /vagrant/terraform.tfvars /home/vagrant/desafio-M13/Terraform
+# sudo cp /vagrant/keypair-modulo13.pem /home/vagrant/desafio-M13/Terraform
+# 
+##Moverme a directorio Terraform
+# sudo chmod 777 /home/vagrant/desafio-M13/Terraform/keypair-modulo13.pem
