@@ -12,8 +12,6 @@ Una vez terminado, vas a ingresar a la siguiente direccion en el navegador que d
 Todavia es una version BETA, tengo varias cosas para seguir mejorando, que espero poder hacerlo en los proximos desafios.
 
 
-![Descripción de la imagen](/Images/image.png)
-
-TEST
+![Alt text](image.png)
 
 Saludos.
