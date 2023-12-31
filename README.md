@@ -12,6 +12,7 @@ Una vez terminado, vas a ingresar a la siguiente direccion en el navegador que d
 Todavia es una version BETA, tengo varias cosas para seguir mejorando, que espero poder hacerlo en los proximos desafios.
 
 
-![TEST]([image.png](https://github.com/martinlopez5/desafio-M14/blob/main/Images/image.png)https://github.com/martinlopez5/desafio-M14/blob/main/Images/image.png)
+![Descripción de la imagen](/Images/image.png)
+
 
 Saludos.
