@@ -1,0 +1,83 @@
+pipeline {
+    agent any
+    
+    environment {
+        // Definir aquí variables de entorno necesarias (por ejemplo, credenciales de Dockerhub)
+        DOCKERHUB_CREDENTIALS = credentials('dockerhub-credentials-id')
+        RepoDockerHub = 'margus23' 
+        NameContainer = 'app-qr'
+    }
+
+    stages {
+        stage('Construcción de la imagen') {
+            steps {
+                script {
+                    // Clonar el repositorio
+                    git branch: 'main', url: 'https://github.com/tu-usuario/tu-repositorio.git'
+
+                    //Moverse de directorio
+                    dir('App-QR'){
+                        // Construir la imagen Docker con el tag dinámico
+                        sh "docker build -t ${env.RepoDockerHub}/${env.NameContainer}:${env.BUILD_NUMBER} ."
+                    }                
+                }
+            }
+        }
+
+        stage('Ejecución del contenedor') {
+            steps {
+                script {
+                    // Ejecutar el contenedor con la imagen construida
+                    sh "docker run -d --name ${env.NameContainer} ${env.RepoDockerHub}/${env.NameContainer}:${env.BUILD_NUMBER}"
+                }
+            }
+        }
+
+        stage('Linting/Eficiencia/Seguridad') {
+            steps {
+                script {
+                    // Puedes utilizar herramientas como Hadolint, Dive, etc.
+                    sh 'hadolint Dockerfile'
+                    // Aquí deberías agregar los comandos necesarios para la verificación
+                }
+            }
+        }
+
+        stage('Testing') {
+            steps {
+                script {
+                    // Agrega comandos para realizar pruebas de la aplicación
+                }
+            }
+        }
+
+        stage('Subir imagen a Dockerhub') {
+            steps {
+                script {
+                    // Loguearse en Dockerhub
+                    sh "echo $DOCKERHUB_CREDENTIALS_PSW | docker login -u $DOCKERHUB_CREDENTIALS_USR --password-stdin "
+
+                    // Subir la imagen a Dockerhub con el tag dinámico
+                    sh "docker push ${env.RepoDockerHub}/${env.NameContainer}:${env.BUILD_NUMBER}"
+                }
+            }
+        }
+    
+
+        stage('Docker logout'){
+            steps{
+                sh "docker logout"
+            }
+        }
+    }
+
+
+    post {
+        always {
+            // Limpiar recursos después de la ejecución
+            script {
+                sh 'docker rm -f ${env.NameContainer}'
+            }
+        }
+    }
+}
