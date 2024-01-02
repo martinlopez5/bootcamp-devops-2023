@@ -46,7 +46,7 @@ pipeline {
         // stage('Testing') {
             // steps {
                 // script {
-                    Agrega comandos para realizar pruebas de la aplicación
+                //    Agrega comandos para realizar pruebas de la aplicación
                 // }
             // }
         // }
