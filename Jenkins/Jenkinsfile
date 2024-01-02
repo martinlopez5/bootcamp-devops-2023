@@ -21,9 +21,25 @@ pipeline {
             }
         }
 
+        stage('Subir imagen a Dockerhub') {
+            steps {
+                script {
+                    // Loguearse en Dockerhub
+                    sh "echo $DOCKERHUB_CREDENTIALS_PSW | docker login -u $DOCKERHUB_CREDENTIALS_USR --password-stdin "
+
+                    // Subir la imagen a Dockerhub con el tag dinámico
+                    sh "docker push ${env.RepoDockerHub}/${env.NameContainer}:${env.BUILD_NUMBER}"
+                }
+            }
+        }
+
         stage('Ejecución del contenedor') {
             steps {
                 script {
+                    // Detener y borrar el contenedor existente (si existe)
+                    sh "docker stop ${env.NameContainer} || true"  // El '|| true' evita que el script falle si el contenedor no existe
+                    sh "docker rm ${env.NameContainer} || true"
+        
                     // Ejecutar el contenedor con la imagen construida
                     sh "docker run -d --name ${env.NameContainer} ${env.RepoDockerHub}/${env.NameContainer}:${env.BUILD_NUMBER}"
                 }
@@ -47,20 +63,7 @@ pipeline {
                 // }
             // }
         // }
-
-        stage('Subir imagen a Dockerhub') {
-            steps {
-                script {
-                    // Loguearse en Dockerhub
-                    sh "echo $DOCKERHUB_CREDENTIALS_PSW | docker login -u $DOCKERHUB_CREDENTIALS_USR --password-stdin "
-
-                    // Subir la imagen a Dockerhub con el tag dinámico
-                    sh "docker push ${env.RepoDockerHub}/${env.NameContainer}:${env.BUILD_NUMBER}"
-                }
-            }
-        }
     
-
         stage('Docker logout'){
             steps{
                 sh "docker logout"
