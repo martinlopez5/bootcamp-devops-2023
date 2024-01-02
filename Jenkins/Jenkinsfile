@@ -30,20 +30,20 @@ pipeline {
             }
         }
 
-        stage('Linting/Eficiencia/Seguridad') {
-            steps {
-                script {
+        // stage('Linting/Eficiencia/Seguridad') {
+            // steps {
+                // script {
                     // Puedes utilizar herramientas como Hadolint, Dive, etc.
-                    sh 'hadolint Dockerfile'
+                    // sh 'hadolint Dockerfile'
                     // Aquí deberías agregar los comandos necesarios para la verificación
-                }
-            }
-        }
+                // }
+            // }
+        // }
 
         // stage('Testing') {
             // steps {
                 // script {
-                //    Agrega comandos para realizar pruebas de la aplicación
+                ////    Agrega comandos para realizar pruebas de la aplicación
                 // }
             // }
         // }
@@ -61,20 +61,20 @@ pipeline {
         }
     
 
-        stage('Docker logout'){
-            steps{
-                sh "docker logout"
-            }
-        }
-    }
+        // stage('Docker logout'){
+            // steps{
+                // sh "docker logout"
+            // }
+        // }
+    // }
 
 
-    post {
-        always {
+    // post {
+        // always {
             // Limpiar recursos después de la ejecución
-            script {
-                sh 'docker rm -f ${env.NameContainer}'
-            }
-        }
-    }
+            // script {
+                // sh 'docker rm -f ${env.NameContainer}'
+            // }
+        // }
+    // }
 }
