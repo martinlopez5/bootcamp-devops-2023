@@ -3,8 +3,6 @@
 #Run Docker Compose
 docker-compose up --build -d
 
-#!/bin/bash
-
 # Obtener la lista de imágenes de Docker
 image_list=$(docker images --format "{{.Repository}}:{{.Tag}}")
 
@@ -16,7 +14,7 @@ echo "$image_list"
 read -p "Seleccione la imagen que desea subir a Docker Hub: " selected_image
 
 # Verificar si la imagen seleccionada existe
-if [[ "$image_list" =~ "$selected_image" ]]; then
+if echo "$image_list" | grep -q "$selected_image"; then
     # Solicitar credenciales de Docker Hub
     read -p "Ingrese su nombre de usuario de Docker Hub: " username
     read -s -p "Ingrese su contraseña de Docker Hub: " password
@@ -38,6 +36,7 @@ if [[ "$image_list" =~ "$selected_image" ]]; then
 else
     echo "La imagen seleccionada no existe. ¡Adiós!"
 fi
+
 
 
 #Borrar imagen y contendor
