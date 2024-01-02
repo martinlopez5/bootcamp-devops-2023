@@ -12,9 +12,6 @@ pipeline {
         stage('Construcción de la imagen') {
             steps {
                 script {
-                    // Clonar el repositorio
-                    git branch: 'main', url: 'https://github.com/tu-usuario/tu-repositorio.git'
-
                     //Moverse de directorio
                     dir('App-QR'){
                         // Construir la imagen Docker con el tag dinámico
