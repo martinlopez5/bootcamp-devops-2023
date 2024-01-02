@@ -43,13 +43,13 @@ pipeline {
             }
         }
 
-        stage('Testing') {
-            steps {
-                script {
-                    // Agrega comandos para realizar pruebas de la aplicación
-                }
-            }
-        }
+        // stage('Testing') {
+            // steps {
+                // script {
+                    Agrega comandos para realizar pruebas de la aplicación
+                // }
+            // }
+        // }
 
         stage('Subir imagen a Dockerhub') {
             steps {
