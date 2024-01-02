@@ -61,20 +61,10 @@ pipeline {
         }
     
 
-        // stage('Docker logout'){
-            // steps{
-                // sh "docker logout"
-            // }
-        // }
-    // }
-
-
-    // post {
-        // always {
-            // Limpiar recursos después de la ejecución
-            // script {
-                // sh 'docker rm -f ${env.NameContainer}'
-            // }
-        // }
-    // }
+        stage('Docker logout'){
+            steps{
+                sh "docker logout"
+            }
+        }
+    }
 }
