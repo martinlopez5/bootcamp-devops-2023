@@ -82,6 +82,7 @@ Cuando la instalacion haya finalizado, vamos a escribir 'exit', para salir de nu
 De esta forma, ya vamos a tener funcionando Docker en nuestro conteneder, ahora vamos a proceder a ingresar a Jenkins, para ello abrimos el navegador de nuestra preferencia, e ingresamos a la siguiente URL:
 
 - http://localhost:8080
+
 ![Alt text](Images/image8.png)
 
 Aca nos va a pedir que ingresemos la InitialPassword, para ello volvemos a nuestra consola y ejecutamos el siguiente comando:
@@ -95,6 +96,7 @@ Luego nos va a pedir que instalemos los Plugins, en este caso seleccionamos la o
 ![Alt text](Images/image10.png)
 
 Una vez que haya finalizado la instalacion de los Plugins, ya vamos a estar dentro de Jenkins. Para poder crear nuestro Pipeline vamos a hacer click en la opcion 'New Task'.
+
 ![Alt text](Images/image11.png)
 
 Vamos a ingresar el nombre de nuestro Pipeline y seleccion la opcion 'Multibranch Pipeline' y le damos a Continue.
@@ -115,6 +117,7 @@ Luego vamos a la opcion 'Credentials'.
 ![Alt text](Images/image16.png)
 
 Ingresamos en 'System'.
+
 ![Alt text](Images/image17.png)
 
 Ahora ingresamos en 'Global Credentials'.
