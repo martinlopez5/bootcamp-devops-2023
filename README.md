@@ -1,4 +1,4 @@
-## APP-QR ##
+# APP-QR #
 
 La idea final de la aplicacion seria que cuando te llega la cuenta, ejemplo, en un restaurante, y al momento de pagar, las personas involucradas quieren pagar todos con la billetera virtual mas famosa, es un chino, ya que cuando escaneas el QR te pone el monto total a pagar. Entonces, en este caso, cuando vos escanees el codigo QR, te va a pedir la cantidad de personas que son en total, que ingreses los mails de sus cuentas de mercadopago, y el monto total de la cuenta. Esto lo que va a realizar, es enviarte una notificacion a tu cuenta, con el monto a pagar. A su vez, en caso de que no llegue la notificacion, tambien va a crear un QR para cada usuario, donde lo van a poder escanear y van a ser dirigidos al pago.
 
@@ -6,7 +6,7 @@ NOTAS: Como veran, tambien corre un postgres, la idea de esto es dejar un regist
 NOTAS: La app esta muy verde todavia, pero la idea es ir mejorandola con el tiempo y que el repositorio siga creciendo.
 
 
-## DESAFIO M14 ##
+# DESAFIO M14 #
 
 Para poder probar la aplicacion, lo primero que vamos a tener que hacer es clonarnos el Repositorio. Para ello, dentro de la terminal de Visual Studio Code, vamos a ejecutar el siguiente comando:
 
@@ -44,9 +44,9 @@ Tambien podemos ingresar a nuestra cuenta de DockerHub y revisar que la imagen s
 
 
 
-## DESAFIO M15 ##
+# DESAFIO M15 #
 
-# JENKINS #
+## JENKINS ##
 
 Para este Desafio, lo podemos realizar de 2 formas. La opcion Nº1 es si estamos trabajando desde Windows, y la opcion Nº2 es si estamos trabajando desde Linux. (Aunque tambien se puede usar el Nº1 desde Linux). En este caso, utilice la opcion Nº2 ya que trabajo desde Linux.
 
@@ -151,7 +151,7 @@ Y como paso final, vamos a ingresar a nuestra cuenta de DockerHub, para ver si p
 
 
 
-# GITHUB ACTIONS #
+## GITHUB ACTIONS ##
 
 Para poder realizar esta parte del Desafio, lo primero que vamos a hacer es clonarnos nuestro repositorio en nuestra PC local, con el siguiente comando:
 
