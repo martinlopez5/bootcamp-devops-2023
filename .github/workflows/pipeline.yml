@@ -14,13 +14,12 @@ jobs:
       - uses: actions/checkout@v3
       - uses: hadolint/hadolint-action@v3.1.0
         with:
-          context: "{{defaultContext}}:App-QR"
-          dockerfile: Dockerfile
+          dockerfile: App-QR/Dockerfile
 
 
   build:
     runs-on: ubuntu-latest
-    need: hadolint
+    needs: hadolint
     steps:
       -
         name: Checkout
