@@ -39,7 +39,7 @@ fi
 
 
 
-#Borrar imagen y contendor
+##Borrar imagen y contendor
 # while true; do
     # read -p "Do you wish to delete the container and image? yes/no: " yn
     # case $yn in
