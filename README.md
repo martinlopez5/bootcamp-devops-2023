@@ -1,10 +1,9 @@
 ## APP-QR ##
 
-La idea final de la aplicacion seria que cuando te llega la cuenta por dar un ejemplo en un restaurante, y al momento de pagar, los comensales quieren pagar todos con mercadopago, es un chino, ya que cuando escaneas el QR te pone el monto total a pagar. Entonces, en este caso, cuando vos escanees el codigo QR, te va a llevar a una pagina, donde te va a pedir la cantidad de personas que son en total, que ingreses los mails de sus cuentas de mercadopago, le vas a dar enviar y a cada uno le va a llegar una notificacion a su mercagopago con el monto a pagar, y asi para cada uno de los usuarios. Una vez que pagaron todos, automaticamente al que escaneo el QR, le sale como que el monto fue pagado en su totalidad. Ademas, genera un QR para cada uno de los usuarios, por si por algun motivo no llego la notificacion, entonces escaneando el QR, lo va a llevar directo a mercadopago para que realice el pago.
+La idea final de la aplicacion seria que cuando te llega la cuenta, ejemplo, en un restaurante, y al momento de pagar, las personas involucradas quieren pagar todos con la billetera virtual mas famosa, es un chino, ya que cuando escaneas el QR te pone el monto total a pagar. Entonces, en este caso, cuando vos escanees el codigo QR, te va a pedir la cantidad de personas que son en total, que ingreses los mails de sus cuentas de mercadopago, y el monto total de la cuenta. Esto lo que va a realizar, es enviarte una notificacion a tu cuenta, con el monto a pagar. A su vez, en caso de que no llegue la notificacion, tambien va a crear un QR para cada usuario, donde lo van a poder escanear y van a ser dirigidos al pago.
 
-NOTAS: Como veran, tambien corre un postgres, la idea de esto es dejar un registro de todas las transacciones, por el momento corre en el mismo contenedor, pero mi idea a futuro es que corran en distintos contenedores.
-
-Todavia es una version BETA, tengo varias cosas para seguir mejorando, que espero poder hacerlo en los proximos desafios.
+NOTAS: Como veran, tambien corre un postgres, la idea de esto es dejar un registro de todas las transacciones.
+NOTAS: La app esta muy verde todavia, pero la idea es ir mejorandola con el tiempo y que el repositorio siga creciendo.
 
 
 ## DESAFIO M14 ##
@@ -138,6 +137,7 @@ Una vez dentro, vamos a ver que esta creado uno con el nombre de nuestra rama, e
 ![Alt text](Images/image22.png)
 
 Vamos a ver que empieza a correr.
+
 ![Alt text](Images/image23.png)
 
 Ingresamos al mismo, y vamos a poder ver el paso a paso.
@@ -153,14 +153,49 @@ Y como paso final, vamos a ingresar a nuestra cuenta de DockerHub, para ver si p
 
 # GITHUB ACTIONS #
 
+Para poder realizar esta parte del Desafio, lo primero que vamos a hacer es clonarnos nuestro repositorio en nuestra PC local, con el siguiente comando:
+
+- git clone https://github.com/mi-repositorio/
+
+Una vez que lo tengamos clonado, vamos a crear una carpeta con el siguiente comando:
+
+- mkdir -p .github/workflows
+
+Dentro de esta carpeta, vamos a agregar nuestro archivo yml, en el cual se van a definir los pasos que querramos ejecutar. (podemos ponerle el nombre que deseemos)
+
+- touch pipeline.yml
+
+Dentro de este archivo, vamos a delcarar los pasos que queremos realizar. En este caso sacamos de la pagina de Marketplace de Github, 2 Actions. Build and Push / Hadolint.
+![Alt text](Images/image27.png)
+
+Para que esto funcione, vamos a tener que cargar las Secrets en nuestro repositorio, para ello vamos a 'Settings'.
+![Alt text](Images/image28.png)
+
+Dentro de 'Settings', vamos a 'Actions', que se encuentra dentro de 'Secrets and variables'.
+![Alt text](Images/image29.png)
+
+Dentro de 'Actions', vamos a crear nuestras 2 secrets.
+![Alt text](Images/image30.png)
+
+
+Una vez que tenemos las credenciales cargadas, vamos a ejecutar los siguientes comandos para realizar un push a nuestro repositorio.
+
+- git add .
+
+- git commit -m "Update pipeline.yml"
+
+- git push
+
+Ahora, cualquier cambio que realicemos dentro de la carpeta con nuestro codigo, se va a ejecutar el pipeline.yml, en este caso, todo cambio que realice sobre la carpeta App-QR, va a activar el pipeline.yml.
+
+Aca podemos ver que se ejecuto correctamente el Hadolint y el Build and Push.
+![Alt text](Images/image31.png)
+
+Tambien si ingresamos a nuestra cuenta de DockerHub, vamos a ver el Push de nuestra imagen creada.
+![Alt text](Images/image32.png)
 
 
 
 
-
-
-
-
-![Alt text](Images/image.png)
 
 Saludos.
