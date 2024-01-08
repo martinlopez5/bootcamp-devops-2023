@@ -1,6 +1,12 @@
 # tests/test_app.py
 import unittest
-from ..app import app, db, Transaction
+import sys
+import os
+
+# Agregar el directorio principal del paquete al sys.path
+sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), '..')))
+
+from app import app, db, Transaction
 
 class TestApp(unittest.TestCase):
     def setUp(self):
