@@ -1,6 +1,6 @@
 # tests/test_app.py
 import unittest
-from app import app, db, Transaction
+from App-QR.app import app, db, Transaction
 
 class TestApp(unittest.TestCase):
     def setUp(self):
