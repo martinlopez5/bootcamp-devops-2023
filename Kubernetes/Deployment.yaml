@@ -1,0 +1,19 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: app-qr
+spec:
+  replicas: 3  # Puedes ajustar el número según tus necesidades
+  selector:
+    matchLabels:
+      app: app-qr
+  template:
+    metadata:
+      labels:
+        app: app-qr
+    spec:
+      containers:
+      - name: app-qr
+        image: margus23/app-qr:10
+        ports:
+        - containerPort: 5000
