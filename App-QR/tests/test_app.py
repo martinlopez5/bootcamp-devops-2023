@@ -1,4 +1,3 @@
-# tests/test_app.py
 import unittest
 import sys
 import os
