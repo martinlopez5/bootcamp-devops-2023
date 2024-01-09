@@ -233,5 +233,59 @@ En este caso, utilizamos GitHub Action para automatizar el build, push y test de
 
 ## KUBERNETES ##
 
+Para poder realizar esta parte del desafio, lo primero que vamos a tener que realizar es posicionarnos sobre la carpeta Kubernetes. Luego vamos a iniciar nuestro cluster de minikube con el siguiente comando:
+
+- minikube start
+![Alt text](Images/image35.png)
+
+Una vez que tenemos el cluster levantado, vamos a proceder a crear un Namespace, para poder trabajar sobre ese Namespace. Para ello vamos a estar seguros que estamos parados sobre el directorio Kubernetes y ejecutar el siguiente comando:
+
+- kubectl apply -f Namespace.yaml
+  
+![Alt text](Images/image36.png)
+
+![Alt text](Images/image37.png)
+
+Una vez aplicado el Namespace.yaml, vamos a ingresar a este namespace con el siguiente comando:
+
+- kubectl config set-context --current --namespace=desafio-final
+  
+![Alt text](Images/image38.png)
+
+Ahora vamos a ejecutar nuestro Depolyment.yaml, con el siguiente comando:
+
+- kubectl apply -f Deployment.yaml
+
+![Alt text](Images/image39.png)
+
+Vamos a realizar un port-forward, en el puerto 5000 para poder utilizar nuestra app. Para ello, vamos a ejecutar el siguiente comando:
+
+- kubectl port-forward deployment/app-qr-deployment 5000:5000
+
+![Alt text](Images/image40.png)
+
+En nuestro navegador vamos a ingresar a la siguiente URL, para ver si la aplicacion esta funcionando correctamente:
+
+- http://localhost:5000
+
+![Alt text](Images/image41.png)
+
+En el caso de que querramos borrar los recursos recien creados, vamos a ejecutar los siguientes comandos:
+
+- kubectl delete -f Deployment.yaml
+- kubectl delete -f Namespace.yaml
+
+![Alt text](Images/image42.png)
+
+
+
+## HELM y ARGO CD ##
+
+
+
+
+
+
+
 
 Saludos.

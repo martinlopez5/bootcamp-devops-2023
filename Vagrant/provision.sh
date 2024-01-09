@@ -16,16 +16,16 @@ curl https://bootstrap.pypa.io/get-pip.py -o get-pip.py
 python3 get-pip.py
 python3 -m pip install ansible
 
-#Instala Docker
+# Instala Docker
 curl -fsSl https://get.docker.com -o get-docker.sh
 sudo sh get-docker.sh
 
-#Use docker without sudo
+# Usa Docker sin sudo
 sudo groupadd docker
 sudo usermod -aG docker vagrant
 newgrp docker
 
-#Instala Jenkins
+# Instala Jenkins
 sudo wget -O /usr/share/keyrings/jenkins-keyring.asc \
   https://pkg.jenkins.io/debian-stable/jenkins.io-2023.key
 echo deb [signed-by=/usr/share/keyrings/jenkins-keyring.asc] \
@@ -34,11 +34,20 @@ echo deb [signed-by=/usr/share/keyrings/jenkins-keyring.asc] \
 sudo apt-get update
 sudo apt-get install jenkins
 
-#Jenkins use Docker
+# Jenkins utiliza Docker
 sudo usermod -aG docker jenkins
 
-#Instala Java
+# Instala Java
 sudo apt-get install openjdk-11-jdk
+
+# Instala Minikube
+curl -LO https://storage.googleapis.com/minikube/releases/latest/minikube_latest_amd64.deb
+sudo dpkg -i minikube_latest_amd64.deb
+rm minikube_latest_amd64.deb
+
+# Instala kubectl
+sudo apt-get install -y kubectl
+
 
 ##Clonar Repo, con archivos Terraform y Ansible
 # git clone https://github.com/martinlopez5/desafio-M13.git
