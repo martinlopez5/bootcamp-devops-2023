@@ -286,9 +286,11 @@ Para poder convertir nuestros recursos de Kubernetes en un paquete de Helm, lo p
 ![Alt text](Images/image43.png)
 
 Deployment.yaml
+
 ![Alt text](Images/image44.png)
 
 Namespace.yaml
+
 ![Alt text](Images/image45.png)
 
 
