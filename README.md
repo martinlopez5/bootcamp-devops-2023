@@ -281,6 +281,25 @@ En el caso de que querramos borrar los recursos recien creados, vamos a ejecutar
 
 ## HELM y ARGO CD ##
 
+Para poder convertir nuestros recursos de Kubernetes en un paquete de Helm, lo primero que tenemos que hacer, es organizar nuestra estructura de directorios. Para ello vamos a crear una carpeta principal que se llame Helm, y luego vamos a crear 2 sub-directorios (charts y templates), dentro de templates, vamos a crear nuestros 2 recursos de Kubernetes (Deployment.yaml y Namespace.yaml), luego dentro del directorio Helm, vamos a crear 2 archivos mas (values.yaml y Chart.yaml)
+
+![Alt text](Images/image43.png)
+
+Deployment.yaml
+![Alt text](Images/image44.png)
+
+Namespace.yaml
+![Alt text](Images/image45.png)
+
+
+Una vez creada nuestra estructura, vamos a ejecutar el siguiente comando, para crear nuestro archivo .tgzm que luego utlizaremos para instalar el paquete de Heml creado.
+
+- helm package .
+
+![Alt text](Images/image50.png)
+
+
+
 
 
 
