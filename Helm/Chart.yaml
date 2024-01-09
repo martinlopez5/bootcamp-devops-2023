@@ -1,4 +1,4 @@
 apiVersion: v2
-name: my-helm-chart
-description: Helm chart for my application
+name: desafio-final
+description: A Helm chart for deploying app-qr resources
 version: 0.1.0

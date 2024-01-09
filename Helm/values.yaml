@@ -1,0 +1,8 @@
+namespace:
+  name: desafio-final
+
+deployment:
+  replicas: 5
+  image: margus23/app-qr:16
+  containerPort: 5000
+

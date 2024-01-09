@@ -1,12 +1,18 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: app-qr
+  name: app-qr-deployment
+  namespace: desafio-final
 spec:
-  replicas: 3  # Puedes ajustar el número según tus necesidades
+  replicas: 5
   selector:
     matchLabels:
       app: app-qr
+  strategy:
+    type: RollingUpdate
+    rollingUpdate:
+      maxSurge: 1  # Indica cuántos pods adicionales pueden crearse durante la actualización
+      maxUnavailable: 1  # Indica cuántos pods pueden estar no disponibles durante la actualización
   template:
     metadata:
       labels:
@@ -14,6 +20,18 @@ spec:
     spec:
       containers:
       - name: app-qr
-        image: margus23/app-qr:10
+        image: margus23/app-qr:16
         ports:
         - containerPort: 5000
+        # env:
+        # - name: FLASK_APP
+          # value: "app.py"
+        # - name: FLASK_RUN_HOST
+          # value: "0.0.0.0"
+        # volumeMounts:
+        # - name: my-app-storage
+          # mountPath: /app/data  # Ruta en el contenedor donde se almacenará la base de datos
+  # volumes:
+  # - name: my-app-storage
+    # persistentVolumeClaim:
+      # claimName: my-app-pvc

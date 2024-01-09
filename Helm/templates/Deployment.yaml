@@ -1,19 +1,25 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: {{ include "my-helm-chart.fullname" . }}
+  name: {{ .Release.Name }}-app-qr-deployment
+  namespace: {{ .Values.namespace.name }}
 spec:
-  replicas: {{ .Values.replicaCount }}
+  replicas: {{ .Values.deployment.replicas }}
   selector:
     matchLabels:
-      app: {{ include "my-helm-chart.fullname" . }}
+      app: app-qr
+  strategy:
+    type: RollingUpdate
+    rollingUpdate:
+      maxSurge: 1
+      maxUnavailable: 1
   template:
     metadata:
       labels:
-        app: {{ include "my-helm-chart.fullname" . }}
+        app: app-qr
     spec:
       containers:
-      - name: {{ .Chart.Name }}
-        image: "{{ .Values.image.repository }}:{{ .Values.image.tag }}"
+      - name: app-qr
+        image: {{ .Values.deployment.image }}
         ports:
-        - containerPort: {{ .Values.service.port }}
+        - containerPort: {{ .Values.deployment.containerPort }}

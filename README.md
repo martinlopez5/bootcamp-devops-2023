@@ -198,4 +198,40 @@ Tambien si ingresamos a nuestra cuenta de DockerHub, vamos a ver el Push de nues
 
 
 
+
+
+# DESAFIO M16 - M17 #
+
+## VAGRANT ##
+
+Dentro de la carpeta Vagrant, van a encontrar los archivos Vagrantfile y provision.sh, los cuales tienen todo lo necesario para poder trabajar desde el Desafio M14, hasta el Desafio M16-M17.
+Nos clonamos el repo, nos posicionamos sobre la carpeta Vagrant y con el siguiente comando, vamos a poder levantar la maquina virtual:
+
+- vagrant up
+
+Una vez levantada, nos conectaremos con el comando:
+
+- vagrant ssh
+
+
+
+## DOCKER ##
+
+La maquina de vagrant viene con todo lo necesario para correr Dockerizar aplicaciones. Y dentro del repositorio, si nos posicionamos en la carpeta App-QR, vamos a tener el DockerFile y DockerCompose de la aplicacion y un scritp 'run.sh' el cual buildea la aplicacion de forma local y sube la imagen al repositorio de DockerHub que se le indique.
+
+![Alt text](Images/image33.png)
+
+
+
+## AUTOMATIZACION DE DOCKERFILE"
+
+En este caso, utilizamos GitHub Action para automatizar el build, push y test de la aplicacion. En este caso, cada vez que se haga un cambio dentro de la carpeta App-QR y se realice el push al repositorio, esto activara las Actions, las cuales correran un Test para el Dockerfile (Hadolint), luego realizara el Build de la aplicacion, una vez finalizado el build, va a ejecutar un Test de Python y si todo esta ok, va a proceder a subir la imagen a DockerHub.
+
+![Alt text](Images/image34.png)
+
+
+
+## KUBERNETES ##
+
+
 Saludos.
