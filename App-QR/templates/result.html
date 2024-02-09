@@ -1,5 +1,3 @@
-<!-- templates/result.html -->
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -9,9 +7,15 @@
 </head>
 <body>
     <h1>Resultado</h1>
-    {% for qr_code in qr_codes %}
-        <img src="{{ qr_code.png }}" alt="QR Code">
+    <p>Monto por persona: <b>{{ amount_per_person }}</b></p>
+    {% for i in range(1, num_people + 1) %}
+        <p>Usuario {{ i }}</p>
+        <img src="{{ url_for('qrcode_image', index=i) }}" alt="QR Code {{ i }}">
         <br>
     {% endfor %}
 </body>
 </html>
+
+
+
+
