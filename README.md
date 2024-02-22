@@ -10,7 +10,7 @@ NOTAS: La app esta muy verde todavia, pero la idea es ir mejorandola con el tiem
 
 Para poder probar la aplicacion, lo primero que vamos a tener que hacer es clonarnos el Repositorio. Para ello, dentro de la terminal de Visual Studio Code, vamos a ejecutar el siguiente comando:
 
-- git clone https://github.com/martinlopez5/desafio-M14.git
+git clone https://github.com/martinlopez5/desafio-M14.git
 
 
 Una vez que tenemos el Repositorio clonado en nuestro local, vamos a dirigirnos al directorio 'App-QR', donde se encuentra todo lo necesario para que la App funcione.
